@@ -10,4 +10,11 @@ class Author extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public static function showAuthors()
+    {
+        return  Author::all();
+    }
 }
+
+
