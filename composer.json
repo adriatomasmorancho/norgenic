@@ -1,0 +1,15 @@
+{
+    "name": "adria/norgenic",
+    "autoload": {
+        "psr-4": {
+            "Adria\\Norgenic\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adria Tomas",
+            "email": "tomas.morancho.adria@alumnat.copernic.cat"
+        }
+    ],
+    "require": {}
+}
