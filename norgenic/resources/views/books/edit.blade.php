@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>bookstore/books/{{ $book['id'] }}/edit</title>
+@endsection
+
 @section('content')
     <h1>Edit Book</h1>
     <form method="POST" action="{{ route('books.update', ['id' => $book->id]) }}" enctype="multipart/form-data">

@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>bookstore/authors</title>
+@endsection
+
 @section('content')
     <h1>Authors</h1>
     <a href="{{ route('authors.create') }}">Create</a>

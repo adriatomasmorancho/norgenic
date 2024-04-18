@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>bookstore/authors/create</title>
+@endsection
+
 @section('content')
     <h1>Add new Author</h1>
     <form method="POST" action="{{ route('authors.store') }}" enctype="multipart/form-data">

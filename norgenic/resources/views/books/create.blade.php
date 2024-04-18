@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>bookstore/books/create</title>
+@endsection
+
 @section('content')
     <h1>Add new Book</h1>
     <form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data">
