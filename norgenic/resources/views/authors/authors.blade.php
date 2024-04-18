@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+@if(Session::has('message'))
+<p>{{Session::get('message')}}</p>
+@endif
     <h1>Authors</h1>
     <a href="{{ route('authors.create') }}">Create</a>
     <table>

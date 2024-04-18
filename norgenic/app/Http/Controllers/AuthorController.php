@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AuthorController extends Controller
 {
@@ -34,6 +35,8 @@ class AuthorController extends Controller
         ]);
     
         Author::insertAuthors($request->input('name'));
+
+        Session::flash('message', "Author created!");
 
         return redirect()->route('authors.create');
     }
@@ -66,6 +69,8 @@ class AuthorController extends Controller
     
         Author::updateAuthors($request->input('name'), $id);
 
+        Session::flash('message', "Author edited!");
+
         return redirect()->route('authors.edit', ['id' => $id]);
     }
 
@@ -75,6 +80,8 @@ class AuthorController extends Controller
     public function destroy(string $id)
     {
         Author::removeAuthors($id);
+
+        Session::flash('message', "Author deleted!");
 
         return redirect()->route('authors');
         

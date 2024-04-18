@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BookController extends Controller
 {
@@ -39,6 +40,8 @@ class BookController extends Controller
         ]);
 
         Book::insertBooks($request->input('title'),$request->input('author'));
+
+        Session::flash('message', "Book created!");
 
         return redirect()->route('books.create');
     }
@@ -77,6 +80,8 @@ class BookController extends Controller
     
         Book::updateBooks($request->input('title'),$request->input('author'), $id);
 
+        Session::flash('message', "Book edited!");
+
         return redirect()->route('books.edit', ['id' => $id]);
     }
 
@@ -86,6 +91,8 @@ class BookController extends Controller
     public function destroy(string $id)
     {
         Book::removeBooks($id);
+
+        Session::flash('message', "Book deleted!");
 
         return redirect()->route('books');
     }

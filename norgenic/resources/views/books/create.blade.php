@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+@if(Session::has('message'))
+<p>{{Session::get('message')}}</p>
+@endif
     <h1>Add new Book</h1>
     <form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data">
     @csrf
