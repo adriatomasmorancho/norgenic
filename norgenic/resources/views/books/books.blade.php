@@ -19,8 +19,8 @@
             <td>{{ $book['title'] }}</td>
             <td>{{ $book['author'] }}</td>
             <td>
-                <a href="{{ route('authors.edit', ['id' => $book->book_id]) }}">Edit</a>
-                <a href="{{ route('authors.remove', ['id' => $book->book_id]) }}">Remove</a>
+                <a href="{{ route('books.edit', ['id' => $book->book_id]) }}">Edit</a>
+                <a href="{{ route('books.remove', ['id' => $book->book_id]) }}">Remove</a>
             </td>
         </tr>
                 @endforeach

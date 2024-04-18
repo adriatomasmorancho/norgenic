@@ -8,7 +8,7 @@
         <h3 class="login__element__h3">
             Name
         </h3>
-        <input  name="name" type="text" value="{{ old('name') }}"></input>
+        <input  name="name" type="text"></input>
                 @error('name')
                     <div class="style-error">{{ $message }}</div>
                 @enderror

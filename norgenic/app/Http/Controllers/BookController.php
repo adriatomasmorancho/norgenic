@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -11,7 +13,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('books.books');
+        $books = Book::showBooks();
+        return view('books.books',  compact('books'));
     }
 
     /**
@@ -19,7 +22,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $authors = Author::showAuthors();
+        return view('books.create', compact('authors'));
     }
 
     /**
@@ -27,7 +31,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string',
+            'author' => 'required',
+        ], [
+            'author.required' => 'The selected author id is invalid',
+        ]);
+
+        Book::insertBooks($request->input('title'),$request->input('author'));
+
+        return redirect()->route('books.create');
     }
 
     /**
@@ -43,7 +56,11 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = Book::searchBooks($id);
+
+        $authors = Author::showAuthors();
+
+        return view('books.edit',  compact('book', 'authors'));
     }
 
     /**
@@ -51,7 +68,16 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|string',
+            'author' => 'required',
+        ], [
+            'author.required' => 'The selected author id is invalid',
+        ]);
+    
+        Book::updateBooks($request->input('title'),$request->input('author'), $id);
+
+        return redirect()->route('books.edit', ['id' => $id]);
     }
 
     /**
@@ -59,6 +85,8 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Book::removeBooks($id);
+
+        return redirect()->route('books');
     }
 }

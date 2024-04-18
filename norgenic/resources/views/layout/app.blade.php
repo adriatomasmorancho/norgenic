@@ -20,7 +20,7 @@
             </a>
         </div>
         <div>
-            <a href="">
+            <a href="{{ route('books') }}">
                 <p>Books</p>
             </a>
         </div>
