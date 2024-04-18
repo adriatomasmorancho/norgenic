@@ -13,10 +13,10 @@ Route::get('/authors/create', [AuthorController::class, 'create'])->name('author
 
 Route::post('/authors/store',  [AuthorController::class, 'store'])->name('authors.store');
 
-Route::get('/authors/editar/{id}',  [AuthorController::class, 'edit'])->name('productos.editar');
+Route::get('/authors/{id}/edit',  [AuthorController::class, 'edit'])->name('authors.edit');
 
-Route::post('/authors/guardar',  [AuthorController::class, 'update'])->name('productos.guardar');
+Route::post('/authors/update/{id}',  [AuthorController::class, 'update'])->name('authors.update');
 
-Route::get('/authors/eliminar/{id}',  [AuthorController::class, 'destroy'])->name('productos.eliminar');
+Route::get('/authors/remove/{id}',  [AuthorController::class, 'destroy'])->name('authors.remove');
 
 Route::get('/books', [BookController::class, 'index'])->name('books');

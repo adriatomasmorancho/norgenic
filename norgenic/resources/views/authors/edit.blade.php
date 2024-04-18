@@ -1,14 +1,14 @@
 @extends('layout.app')
 
 @section('content')
-    <h1>Add new Author</h1>
-    <form method="POST" action="{{ route('authors.store') }}" enctype="multipart/form-data">
+    <h1>Edit Author</h1>
+    <form method="POST" action="{{ route('authors.update', ['id' => $author->id]) }}" enctype="multipart/form-data">
     @csrf
     <div>
         <h3 class="login__element__h3">
             Name
         </h3>
-        <input  name="name" type="text" value="{{ old('name') }}"></input>
+        <input  name="name" type="text" value="{{ $author['name'] }}"></input>
                 @error('name')
                     <div class="style-error">{{ $message }}</div>
                 @enderror

@@ -29,7 +29,13 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+    
+        Author::insertAuthors($request->input('name'));
+
+        return redirect()->route('authors.create');
     }
 
     /**
@@ -45,7 +51,8 @@ class AuthorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $author = Author::searchAuthors($id);
+        return view('authors.edit',  compact('author'));
     }
 
     /**
@@ -53,7 +60,13 @@ class AuthorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+    
+        Author::updateAuthors($request->input('name'), $id);
+
+        return redirect()->route('authors.edit', ['id' => $id]);
     }
 
     /**
@@ -61,6 +74,9 @@ class AuthorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Author::removeAuthors($id);
+
+        return redirect()->route('authors');
+        
     }
 }

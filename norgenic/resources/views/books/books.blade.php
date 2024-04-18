@@ -1,9 +1,29 @@
 @extends('layout.app')
 
 @section('content')
-    <h1>Home</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipiscing elit aenean facilisis quisque, class consequat nibh elementum. Cubilia tristique cursus laoreet arcu facilisis cum magna, tortor conubia blandit semper per habitasse ut, gravida nisi pretium placerat dis accumsan. Vestibulum purus tortor accumsan consequat montes cursus torquent metus magnis nullam aptent nisl facilisi, ante sed tempus molestie vehicula pellentesque fringilla lacinia quisque volutpat tincidunt quam.
-
-Curabitur non inceptos ullamcorper praesent cubilia sapien habitasse velit et, morbi euismod torquent aenean vitae natoque nam justo, venenatis litora condimentum nascetur tellus mus vestibulum mollis. At curabitur ultricies porttitor facilisi nec hac, ut luctus gravida fames mi semper elementum, iaculis parturient cras sociosqu libero. Nec posuere sagittis et eu integer, facilisis ut accumsan eros senectus, tempor pretium morbi curae.
-</p>
+    <h1>Books</h1>
+    <a href="{{ route('books.create') }}">Create</a>
+    <table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach ($books as $key => $book)
+        <tr>
+            <td>{{ $book['book_id'] }}</td>
+            <td>{{ $book['title'] }}</td>
+            <td>{{ $book['author'] }}</td>
+            <td>
+                <a href="{{ route('authors.edit', ['id' => $book->book_id]) }}">Edit</a>
+                <a href="{{ route('authors.remove', ['id' => $book->book_id]) }}">Remove</a>
+            </td>
+        </tr>
+                @endforeach
+    </tbody>
+    </table>
 @endsection

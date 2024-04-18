@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Authors</h1>
-    <a href="{{ route('authors.create'}}">Create</a>
+    <a href="{{ route('authors.create') }}">Create</a>
     <table>
     <thead>
         <tr>
@@ -17,8 +17,8 @@
             <td>{{ $author['id'] }}</td>
             <td>{{ $author['name'] }}</td>
             <td>
-                <a href="{{ route('shop.index', ['nombre' => auth()->user()->shop_url]) }}">Edit</a>
-                <a href="{{ route('shop.index', ['nombre' => auth()->user()->shop_url]) }}">Remove</a>
+                <a href="{{ route('authors.edit', ['id' => $author->id]) }}">Edit</a>
+                <a href="{{ route('authors.remove', ['id' => $author->id]) }}">Remove</a>
             </td>
         </tr>
                 @endforeach
