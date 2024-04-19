@@ -6,24 +6,27 @@
 
 @section('content')
 @if(Session::has('message'))
-<p>{{Session::get('message')}}</p>
+<div class="row">
+    <div class="col ml-3 mt-3 alert alert-success">
+        <p>{{Session::get('message')}}</p>
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
+    </div>
+</div>
 @endif
     <h1>Edit Author</h1>
     <form method="POST" action="{{ route('authors.update', ['id' => $author->id]) }}" enctype="multipart/form-data">
     @csrf
-    <div>
-        <h3 class="login__element__h3">
-            Name
-        </h3>
-        <input  name="name" type="text" value="{{ $author['name'] }}"></input>
+    <div class="container">
+    <label for="name">Name</label>
+        <input  name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $author['name'] }}"></input>
                 @error('name')
-                    <div class="style-error">{{ $message }}</div>
+                    <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
-        </div>
-        <div class="create__button">
-                <button class="login__element__button btn-create" id="enviar" type="submit">Sumbit</button>
-            </div>
-
-        </form>
+        <button class="btn btn-primary mt-3" type="submit">Submit</button>
+    </div>
+    </form>
    
 @endsection
