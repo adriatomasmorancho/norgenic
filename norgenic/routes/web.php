@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\BookstoreController;
 
 Route::get('/bookstore', [BookstoreController::class, 'index'])->name('bookstore');
@@ -30,3 +31,5 @@ Route::get('/bookstore/books/{id}/edit',  [BookController::class, 'edit'])->name
 Route::post('/bookstore/books/update/{id}',  [BookController::class, 'update'])->name('books.update');
 
 Route::get('/bookstore/books/remove/{id}',  [BookController::class, 'destroy'])->name('books.remove');
+
+Route::post('/bookstore/language', [LanguageController::class, 'changeAppLocaleTo'])->name('language');

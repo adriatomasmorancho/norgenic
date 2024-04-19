@@ -19,6 +19,15 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('books') }}">Books</a>
         </li>
+        <li class="nav-item">
+        <form method="POST" action="{{ route('language') }}">
+    @csrf
+    <select class="nav-link" name="language" onchange="this.form.submit()">
+    <option value="en" {{ (old('language') == 'en' || app()->getLocale() == 'en') ? 'selected' : '' }}>ENGLISH</option>
+    <option value="es" {{ (old('language') == 'es' || app()->getLocale() == 'es') ? 'selected' : '' }}>SPANISH</option>
+      </select>
+</form>
+        </li>
       </ul>
     </div>
   </div>
