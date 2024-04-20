@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-<title>bookstore/books/{{ $book['id'] }}/edit</title>
+<title>bookstore/<?php echo getenv('APP_LOCALE'); ?>/books/{{ $book['id'] }}/edit</title>
 @endsection
 
 @section('content')
