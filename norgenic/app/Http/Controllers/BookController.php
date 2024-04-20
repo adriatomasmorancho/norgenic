@@ -36,12 +36,12 @@ class BookController extends Controller
             'title' => 'required|string',
             'author' => 'required',
         ], [
-            'author.required' => 'The selected author id is invalid',
+            'author.required' => __('authorRequired'),
         ]);
 
         Book::insertBooks($request->input('title'),$request->input('author'));
 
-        Session::flash('message', "Book created!");
+        Session::flash('message', __('messageBookCreated'));
 
         return redirect()->route('books.create');
     }
@@ -75,12 +75,12 @@ class BookController extends Controller
             'title' => 'required|string',
             'author' => 'required',
         ], [
-            'author.required' => 'The selected author id is invalid',
+            'author.required' => __('authorRequired'),
         ]);
     
         Book::updateBooks($request->input('title'),$request->input('author'), $id);
 
-        Session::flash('message', "Book edited!");
+        Session::flash('message', __('messageBookEdited'));
 
         return redirect()->route('books.edit', ['id' => $id]);
     }
@@ -92,7 +92,7 @@ class BookController extends Controller
     {
         Book::removeBooks($id);
 
-        Session::flash('message', "Book deleted!");
+        Session::flash('message', __('messageBookDeleted'));
 
         return redirect()->route('books');
     }

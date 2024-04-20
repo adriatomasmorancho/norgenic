@@ -16,19 +16,19 @@
     </div>
 </div>
 @endif
-<h1>Add new Author</h1>
+<h1>{{ __('newAuthor') }}</h1>
 <form method="POST" action="{{ route('authors.store') }}" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col">
         </div>
         <div class="col-md-6"> 
-            <label for="name">Name</label>
+            <label for="name">{{ __('name') }}</label>
             <input name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text">
             @error('name')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
-            <button class="btn btn-primary mt-3" type="submit">Submit</button>
+            <button class="btn btn-primary mt-3" type="submit">{{ __('sumbit') }}</button>
         </div>
         <div class="col">
         </div>

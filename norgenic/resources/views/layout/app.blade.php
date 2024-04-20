@@ -14,17 +14,17 @@
     <div class="navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('authors') }}">Authors</a>
+          <a class="nav-link" href="{{ route('authors') }}">{{ __('authors') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('books') }}">Books</a>
+          <a class="nav-link" href="{{ route('books') }}">{{ __('books') }}</a>
         </li>
         <li class="nav-item">
         <form method="POST" action="{{ route('language') }}">
     @csrf
     <select class="nav-link" name="language" onchange="this.form.submit()">
-    <option value="en" {{ (old('language') == 'en' || app()->getLocale() == 'en') ? 'selected' : '' }}>ENGLISH</option>
-    <option value="es" {{ (old('language') == 'es' || app()->getLocale() == 'es') ? 'selected' : '' }}>SPANISH</option>
+    <option value="en" {{ (old('language') == 'en' || app()->getLocale() == 'en') ? 'selected' : '' }}>{{ __('en') }}</option>
+    <option value="es" {{ (old('language') == 'es' || app()->getLocale() == 'es') ? 'selected' : '' }}>{{ __('es') }}</option>
       </select>
 </form>
         </li>

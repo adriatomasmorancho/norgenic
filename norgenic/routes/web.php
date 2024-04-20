@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\BookstoreController;
 
-Route::get('/bookstore/'.env('APP_LOCALE'), [BookstoreController::class, 'index'])->name('bookstore');
+Route::get('/bookstore', [BookstoreController::class, 'index'])->name('bookstore');
 
 Route::get('/bookstore/'.env('APP_LOCALE').'/authors', [AuthorController::class, 'index'])->name('authors');
 

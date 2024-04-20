@@ -17,15 +17,15 @@
 </div>
 @endif
 <div class="p-2">
-    <h1>Books</h1>
-    <a class="btn btn-primary" href="{{ route('books.create') }}">Create</a>
+    <h1>{{ __('books') }}</h1>
+    <a class="btn btn-primary" href="{{ route('books.create') }}">{{ __('create') }}</a>
     <table class="table">
     <thead>
         <tr>
             <th>#</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Action</th>
+            <th>{{ __('title') }}</th>
+            <th>{{ __('author') }}</th>
+            <th>{{ __('action') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -35,8 +35,8 @@
             <td>{{ $book['title'] }}</td>
             <td>{{ $book['author'] }}</td>
             <td>
-                <a class="btn btn-primary" href="{{ route('books.edit', ['id' => $book->book_id]) }}">Edit</a>
-                <a class="btn btn-danger" href="{{ route('books.remove', ['id' => $book->book_id]) }}">Remove</a>
+                <a class="btn btn-primary" href="{{ route('books.edit', ['id' => $book->book_id]) }}">{{ __('edit') }}</a>
+                <a class="btn btn-danger" href="{{ route('books.remove', ['id' => $book->book_id]) }}">{{ __('remove') }}</a>
             </td>
         </tr>
                 @endforeach

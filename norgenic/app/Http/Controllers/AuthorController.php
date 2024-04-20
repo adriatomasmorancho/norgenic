@@ -36,7 +36,7 @@ class AuthorController extends Controller
     
         Author::insertAuthors($request->input('name'));
 
-        Session::flash('message', "Author created!");
+        Session::flash('message', __('messageAuthorCreated'));
 
         return redirect()->route('authors.create');
     }
@@ -69,7 +69,7 @@ class AuthorController extends Controller
     
         Author::updateAuthors($request->input('name'), $id);
 
-        Session::flash('message', "Author edited!");
+        Session::flash('message', __('messageAuthorEdited'));
 
         return redirect()->route('authors.edit', ['id' => $id]);
     }
@@ -81,7 +81,7 @@ class AuthorController extends Controller
     {
         Author::removeAuthors($id);
 
-        Session::flash('message', "Author deleted!");
+        Session::flash('message', __('messageAuthorDeleted'));
 
         return redirect()->route('authors');
         
