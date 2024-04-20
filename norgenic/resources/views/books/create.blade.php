@@ -16,7 +16,7 @@
     </div>
 </div>
 @endif
-    <h1>{{ __('newBook') }}</h1>
+    <h1 class="p-2">{{ __('newBook') }}</h1>
     <form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data">
     @csrf
     <div class="row">

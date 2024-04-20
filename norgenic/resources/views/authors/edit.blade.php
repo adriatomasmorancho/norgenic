@@ -16,7 +16,7 @@
     </div>
 </div>
 @endif
-    <h1>{{ __('editAuthor') }}</h1>
+    <h1 class="p-2">{{ __('editAuthor') }}</h1>
     <form method="POST" action="{{ route('authors.update', ['id' => $author->id]) }}" enctype="multipart/form-data">
     @csrf
     <div class="row">
