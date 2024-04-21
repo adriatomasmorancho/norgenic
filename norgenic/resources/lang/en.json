@@ -241,5 +241,13 @@
     "sumbit": "Sumbit",
     "selectAuthor": "Select Author",
     "editAuthor": "Edit Author",
-    "editBook": "Edit Book"
+    "editBook": "Edit Book",
+    "authorError": "Author Error",
+    "messageAuthorError": "Sorry, the author is already exist.",
+    "bookError":"Book Error",
+    "messageBookError":"Sorry, the book is already exist.",
+    "backHome":"Back to Home",
+    "genericError": "Generic Error",
+    "messageGenericError":"Sorry, the page you are looking for does not exist."
+
 }

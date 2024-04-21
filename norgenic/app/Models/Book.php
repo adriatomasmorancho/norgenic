@@ -37,6 +37,10 @@ class Book extends Model
 
     public static function removeBooks($id)
     {
-        Book::where('id', $id)->delete();
+        $affected = Book::where('id', $id)->delete();
+
+    if ($affected === 0) {
+        throw new \Exception();
+    }
     }
 }

@@ -241,7 +241,14 @@
     "sumbit": "Enviar",
     "selectAuthor": "Seleccionar Autor",
     "editAuthor": "Editar Autor",
-    "editBook": "Editar Libro"
+    "editBook": "Editar Libro",
+    "authorError": "Error Autor",
+    "messageAuthorError": "Lo siento, el Autor ya existe.",
+    "bookError":"Error Libro",
+    "messageBookError":"Lo siento, el Libro ya existe.",
+    "backHome":"Volver a Home",
+    "genericError": "Error Genérico",
+    "messageGenericError":"Lo siento, la página que estas buscando no existe."
 
 
 }

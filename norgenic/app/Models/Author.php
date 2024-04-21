@@ -36,7 +36,11 @@ class Author extends Model
 
     public static function removeAuthors($id)
     {
-        Author::where('id', $id)->delete();
+        $affected = Author::where('id', $id)->delete();
+
+        if ($affected === 0) {
+            throw new \Exception();
+        }
     }
 
 }

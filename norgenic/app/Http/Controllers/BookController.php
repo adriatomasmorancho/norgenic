@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Exception;
 
 class BookController extends Controller
 {
@@ -39,11 +40,19 @@ class BookController extends Controller
             'author.required' => __('authorRequired'),
         ]);
 
+        try{
+
         Book::insertBooks($request->input('title'),$request->input('author'));
 
         Session::flash('message', __('messageBookCreated'));
 
         return redirect()->route('books.create');
+
+        }catch (Exception $e) {
+
+            return redirect()->route('error.book');
+        }
+
     }
 
     /**
@@ -59,11 +68,20 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
+        try{
         $book = Book::searchBooks($id);
+
+        if ($book === null) {
+            return redirect()->route('error.generic');
+        }
 
         $authors = Author::showAuthors();
 
         return view('books.edit',  compact('book', 'authors'));
+        }catch (Exception $e) {
+
+            return redirect()->route('error.generic');
+        }
     }
 
     /**
@@ -77,12 +95,19 @@ class BookController extends Controller
         ], [
             'author.required' => __('authorRequired'),
         ]);
+
+        try{
     
         Book::updateBooks($request->input('title'),$request->input('author'), $id);
 
         Session::flash('message', __('messageBookEdited'));
 
         return redirect()->route('books.edit', ['id' => $id]);
+
+        }catch (Exception $e) {
+
+            return redirect()->route('error.book');
+        }
     }
 
     /**
@@ -90,10 +115,12 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        Book::removeBooks($id);
-
-        Session::flash('message', __('messageBookDeleted'));
-
-        return redirect()->route('books');
+        try {
+            Book::removeBooks($id);
+            Session::flash('message', __('messageBookDeleted'));
+            return redirect()->route('books');
+        } catch (Exception $e) {
+            return redirect()->route('error.generic');
+        }
     }
 }

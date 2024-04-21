@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Exception;
 
 class AuthorController extends Controller
 {
@@ -33,12 +34,19 @@ class AuthorController extends Controller
         $request->validate([
             'name' => 'required|string',
         ]);
+
+        try{
+            Author::insertAuthors($request->input('name'));
+
+            Session::flash('message', __('messageAuthorCreated'));
     
-        Author::insertAuthors($request->input('name'));
+            return redirect()->route('authors.create');
+        
+    } catch (Exception $e) {
 
-        Session::flash('message', __('messageAuthorCreated'));
-
-        return redirect()->route('authors.create');
+        return redirect()->route('error.author');
+    }
+    
     }
 
     /**
@@ -54,8 +62,15 @@ class AuthorController extends Controller
      */
     public function edit(string $id)
     {
+        try{
         $author = Author::searchAuthors($id);
+        if ($author === null) {
+            return redirect()->route('error.generic');
+        }
         return view('authors.edit',  compact('author'));
+        }catch (Exception $e) {
+            return redirect()->route('error.generic');
+        }
     }
 
     /**
@@ -66,12 +81,18 @@ class AuthorController extends Controller
         $request->validate([
             'name' => 'required|string',
         ]);
+
+        try{
     
         Author::updateAuthors($request->input('name'), $id);
 
         Session::flash('message', __('messageAuthorEdited'));
 
         return redirect()->route('authors.edit', ['id' => $id]);
+        }catch (Exception $e) {
+
+            return redirect()->route('error.author');
+        }
     }
 
     /**
@@ -79,11 +100,15 @@ class AuthorController extends Controller
      */
     public function destroy(string $id)
     {
+        try{
         Author::removeAuthors($id);
 
         Session::flash('message', __('messageAuthorDeleted'));
 
         return redirect()->route('authors');
+        }catch (Exception $e) {
+            return redirect()->route('error.generic');
+        }
         
     }
 }

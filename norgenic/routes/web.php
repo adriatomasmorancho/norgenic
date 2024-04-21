@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\BookstoreController;
@@ -33,3 +34,13 @@ Route::post('/bookstore/'.env('APP_LOCALE').'/books/update/{id}',  [BookControll
 Route::get('/bookstore/'.env('APP_LOCALE').'/books/remove/{id}',  [BookController::class, 'destroy'])->name('books.remove');
 
 Route::post('/bookstore/language', [LanguageController::class, 'changeAppLocaleTo'])->name('language');
+
+Route::get('/bookstore/'.env('APP_LOCALE').'/genericError/', [ErrorController::class, 'viewGenericError'])->name('error.generic');
+
+Route::get('/bookstore/'.env('APP_LOCALE').'/authorError/', [ErrorController::class, 'viewAuthorError'])->name('error.author');
+
+Route::get('/bookstore/'.env('APP_LOCALE').'/bookError/', [ErrorController::class, 'viewBookError'])->name('error.book');
+
+Route::fallback(function () {
+    return redirect()->route('error.generic');
+});
