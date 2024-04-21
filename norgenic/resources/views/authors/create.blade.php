@@ -22,11 +22,11 @@
     <div class="row">
         <div class="col">
         </div>
-        <div class="col-md-6"> 
+        <div class="col-md-6">
             <label for="name">{{ __('name') }}</label>
             <input name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text">
             @error('name')
-                <div class="invalid-feedback">{{ $message }}</div>
+            <div class="invalid-feedback">{{ $message }}</div>
             @enderror
             <button class="btn btn-primary mt-3" type="submit">{{ __('sumbit') }}</button>
         </div>
