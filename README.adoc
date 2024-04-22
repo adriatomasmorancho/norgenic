@@ -2,6 +2,10 @@
 
 == IMPORTANTE
 
+- Modifica el archivo .env con los datos de tu base de datos (puertos, usuario, contraseña) para que la conexión sea 
+
+correcta.
+
 - Al levantar la aplicación en local con el comando "php artisan serve" ir a "http://localhost:8000/bookstore".
 
 - Realiza un "php artisan migrate" para crear las tablas en la base de datos.
