@@ -22,7 +22,7 @@ para rellenar la información).
 
 === VISTAS DE ERROR
 
-He añadido tres vistas de error:
+He añadido tres vistas muy simples de error:
 
 - Error genérico, que utilizo para cualquier ruta incorrecta.
 
