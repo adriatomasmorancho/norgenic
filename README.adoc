@@ -53,3 +53,9 @@ para ejecutar todos los archivos de pruebas.
 
 == DIFICULTADES
 
+He tenido algunos problemas con Bootstrap porque lo había utilizado muy poco, pero busqué información en
+
+'https://www.w3schools.com/' y al final lo resolví.
+
+También tuve que investigar cómo hacer una web multi-idioma, para lo cual vi algunos videos.
+
